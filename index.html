@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kicsi Dalok – Gyerekdalok állati jókedvvel!</title>
+  <meta name="description" content="Gyerekdalok szöveggel, videóval és képekkel – találkozz Rocker Rudival, Technós Békával és Sima Libával a Kicsi Dalok oldalán!">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="fejlec">
+    <img src="kepek/fejlec.jpg" alt="Kicsi Dalok – Gyerekdalok állati jókedvvel!">
+  </header>
+
+  <div class="kereso-doboz">
+    <input type="text" id="keresoInput" placeholder="Keresés dal vagy karakter szerint...">
+    <div id="keresoTalalatok"></div>
+  </div>
+
+  <main class="tartalomdoboz">
+    <section>
+      <h1>Üdv a Kicsi Dalok világában! 🎉</h1>
+      <p>Gyerekdalok állati jókedvvel – nálunk találkozhatsz Rocker Rudival, Technós Békával és Sima Libával! Nézd meg a legnépszerűbb dalokat, szöveggel, képekkel és videóval!</p>
+    </section>
+
+    <section>
+      <h2>Ajánlott dalok</h2>
+      <ul>
+        <li><a href="egy-boszorka-van-dal.html">Pitypang Dal</a></li>
+        <li><a href="komaromi-kisleany-dal.html">Szúnyog Dal</a></li>
+        <li><a href="boci-boci-tarka-dal.html">Boci Boci Tarka</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ismerd meg a szereplőket</h2>
+      <div class="karakter-grid">
+        <div class="karakter">
+          <img src="kepek/rocker-rudi.jpg" alt="Rocker Rudi">
+          <h3>Rocker Rudi 🎸</h3>
+          <p>A metálos róka, a zúzós bulit kedvelő gyerekeknek!</p>
+        </div>
+        <div class="karakter">
+          <img src="kepek/technos-beka.jpg" alt="Technós Béka">
+          <h3>Technós Béka 🐢</h3>
+          <p>A teknős DJ – ritmus és fények mestere.</p>
+        </div>
+        <div class="karakter">
+          <img src="kepek/sima-liba.jpg" alt="Sima Liba">
+          <h3>Sima Liba 🕶️</h3>
+          <p>Laza, kedves, stílusos.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Kicsi Dalok – Gyerekdalok állati jókedvvel!</p>
+  </footer>
+
+  <script>
+    const dalok = [
+      { nev: "Egy boszorka van", url: "egy-boszorka-van-dal.html" },
+      { nev: "Komáromi kisleány", url: "komaromi-kisleany-dal.html" },
+      { nev: "Boci Boci Tarka", url: "boci-boci-tarka-dal.html" },
+      { nev: "Rocker Rudi", url: "#" },
+      { nev: "Technós Béka", url: "#" },
+      { nev: "Sima Liba", url: "#" }
+    ];
+
+    const input = document.getElementById("keresoInput");
+    const talalatokDiv = document.getElementById("keresoTalalatok");
+
+    input.addEventListener("input", () => {
+      const keres = input.value.toLowerCase();
+      talalatokDiv.innerHTML = "";
+      if (keres.length > 1) {
+        const talalatok = dalok.filter(d => d.nev.toLowerCase().includes(keres));
+        if (talalatok.length === 0) {
+          talalatokDiv.innerHTML = "<em>Nincs találat.</em>";
+        } else {
+          talalatok.forEach(talalat => {
+            const link = document.createElement("a");
+            link.href = talalat.url;
+            link.textContent = talalat.nev;
+            talalatokDiv.appendChild(link);
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+<!-- style.css -->
+
+/* Alapstílusok */
+body {
+  margin: 0;
+  padding: 0;
+  background: url('kepek/hatter.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+}
+
+.fejlec img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.kereso-doboz {
+  background-color: #fff3cd;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 2px solid #ffcc00;
+}
+
+#keresoInput {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid #ff9900;
+}
+
+#keresoTalalatok {
+  margin-top: 0.5rem;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#keresoTalalatok a {
+  display: block;
+  padding: 0.4rem;
+  background-color: #fffbe6;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #333;
+}
+
+#keresoTalalatok a:hover {
+  background-color: #ffe699;
+}
+
+.tartalomdoboz {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.karakter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.karakter {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.karakter img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+}
+
+footer {
+  background-color: #ffd966;
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .karakter-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  #keresoInput {
+    width: 95%;
+  }
+}
